@@ -1,0 +1,165 @@
+body{
+margin:0;
+font-family: "Segoe UI", sans-serif;
+background:linear-gradient(135deg,#8d9ad6,#be96e5);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* App container */
+
+.app-container{
+width:600px;          /* bigger for laptop */
+height:85vh;
+background:white;
+border-radius:20px;
+box-shadow:0 20px 50px rgba(0,0,0,0.2);
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+/* Header */
+
+.header{
+background:#7061e2;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.header h1{
+margin:0;
+font-size:26px;
+}
+
+.header p{
+margin:5px 0 0;
+font-size:14px;
+opacity:0.9;
+}
+
+/* Chat container */
+
+.chat-container{
+flex:1;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+/* Chat messages */
+
+.chat-messages{
+flex:1;
+overflow-y:auto;
+overflow-x:hidden;
+padding:15px;
+display:flex;
+flex-direction:column;
+background:#f5f6fa;
+scroll-behavior:smooth;
+max-height:100%;
+}
+
+/* Message bubbles */
+
+.message{
+max-width:70%;
+padding:10px 15px;
+margin:8px 0;
+border-radius:15px;
+font-size:14px;
+}
+
+.user{
+align-self:flex-end;
+background:#6c5ce7;
+color:white;
+border-bottom-right-radius:5px;
+}
+
+.bot{
+align-self:flex-start;
+background:#e0e0e0;
+color:black;
+border-bottom-left-radius:5px;
+}
+
+/* Input area (fixed bottom) */
+
+.input-area{
+display:flex;
+padding:12px;
+border-top:1px solid #eee;
+background:white;
+}
+
+/* Input box */
+
+input{
+flex:1;
+padding:12px;
+border-radius:20px;
+border:1px solid #ccc;
+outline:none;
+font-size:14px;
+}
+
+/* Send button */
+
+button{
+margin-left:10px;
+padding:12px 20px;
+border:none;
+border-radius:20px;
+background:#6c5ce7;
+color:white;
+cursor:pointer;
+font-weight:600;
+}
+
+button:hover{
+background:#d3d1e2;
+}
+
+.main-layout{
+display:flex;
+height:100vh;
+}
+
+.sidebar{
+width:250px;
+background:#202123;
+color:white;
+padding:20px;
+}
+
+.sidebar h2{
+margin-bottom:20px;
+}
+
+.sidebar button{
+width:100%;
+padding:10px;
+margin-bottom:20px;
+background:#6c5ce7;
+border:none;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+.chat-item{
+background:#2f3035;
+padding:10px;
+margin-bottom:10px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.chat-item:hover{
+background:#3a3b40;
+}
