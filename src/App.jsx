@@ -266,6 +266,7 @@
 
 // export default App;
 
+
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
@@ -280,32 +281,30 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-
   const messagesEndRef = useRef(null);
-
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+}, [messages]);
+<div ref={messagesEndRef}></div>
 
   const loginUser = () => {
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailPattern.test(email)) {
-      alert("Please enter a valid email address");
-      return;
-    }
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address");
+    return;
+  }
 
-    if (!password) {
-      alert("Please enter password");
-      return;
-    }
+  if (!password) {
+    alert("Please enter password");
+    return;
+  }
 
-    setIsLoggedIn(true);
-  };
+  setIsLoggedIn(true);
+};
 
   const sendMessage = async () => {
-
     if (!input.trim()) return;
 
     const userText = input;
@@ -315,7 +314,6 @@ function App() {
     setLoading(true);
 
     try {
-
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
         {
@@ -336,47 +334,37 @@ function App() {
       setMessages((prev) => [...prev, { text: botReply, sender: "bot" }]);
 
     } catch (error) {
-
       setMessages((prev) => [
         ...prev,
         { text: "Something went wrong 😢", sender: "bot" },
       ]);
-
     }
 
     setLoading(false);
-
   };
 
-  /* ---------- WELCOME PAGE ---------- */
+  /* ---------------- WELCOME PAGE ---------------- */
 
   if (showWelcome) {
     return (
-      <div className="center-page">
+      <div className="welcome-page">
+        <h1>Welcome to MateX AI</h1>
+        <p>Your Intelligent AI Assistant</p>
 
-        <div className="box">
-
-          <h1>Welcome to MateX AI</h1>
-          <p>Your Intelligent AI Assistant</p>
-
-          <button onClick={() => setShowWelcome(false)}>
-            Get Started
-          </button>
-
-        </div>
-
+        <button onClick={() => setShowWelcome(false)}>
+          Get Started
+        </button>
       </div>
     );
   }
 
-  /* ---------- LOGIN PAGE ---------- */
+  /* ---------------- LOGIN PAGE ---------------- */
 
   if (!isLoggedIn) {
-
     return (
-      <div className="center-page">
+      <div className="auth-page">
 
-        <div className="box">
+        <div className="auth-box">
 
           <h1>MateX AI</h1>
           <h2>Login</h2>
@@ -395,21 +383,18 @@ function App() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button onClick={loginUser}>
-            Login
-          </button>
+          <button onClick={loginUser}>Login</button>
 
         </div>
 
       </div>
     );
-
   }
+  
 
-  /* ---------- CHAT PAGE ---------- */
+  /* ---------------- CHATBOT PAGE ---------------- */
 
   return (
-
     <div className="app-container">
 
       <header className="header">
@@ -431,13 +416,11 @@ function App() {
           ))}
 
           {loading && <div className="message bot">Typing...</div>}
-
           <div ref={messagesEndRef}></div>
 
         </div>
 
         <div className="input-area">
-
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -445,16 +428,12 @@ function App() {
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           />
 
-          <button onClick={sendMessage}>
-            Send
-          </button>
-
+          <button onClick={sendMessage}>Send</button>
         </div>
 
       </div>
 
     </div>
-
   );
 }
 
