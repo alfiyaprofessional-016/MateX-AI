@@ -153,3 +153,48 @@ background:#d3d1e2;
 
 }
 
+.main-layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #111;
+  color: white;
+  padding: 20px;
+}
+
+/* Chat area */
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .app-container {
+    width: 100%;
+  }
+
+  .chat-container {
+    padding: 10px;
+  }
+
+  .chat-input {
+    width: 100%;
+  }
+}
+
